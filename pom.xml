@@ -8,8 +8,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>ui</module>
+        <module>resource/message</module>
         <module>id</module>
-        <module>resouce/message</module>
     </modules>
     <packaging>pom</packaging>
 
