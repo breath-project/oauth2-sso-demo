@@ -1,0 +1,16 @@
+server:
+  port: 4000
+  servlet:
+    context-path: /id
+
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      scope: all
+
+spring:
+  security:
+    user:
+      password: pwd
