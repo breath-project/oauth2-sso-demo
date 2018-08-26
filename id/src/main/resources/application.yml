@@ -8,11 +8,6 @@ security:
     authorization:
       check-token-access: permitAll()
 
-spring:
-  security:
-    user:
-      password: pwd
-
 logging:
   level:
     org.springframework.security: DEBUG

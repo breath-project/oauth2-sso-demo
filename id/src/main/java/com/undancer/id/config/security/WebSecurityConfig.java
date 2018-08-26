@@ -4,6 +4,7 @@ import com.undancer.id.service.ClientDetailsServiceImpl;
 import com.undancer.id.service.UserDetailsServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,7 +17,26 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        // @formatter:off
+        http
+                .formLogin()
+                .loginPage("/login").permitAll()
+            .and()
+                .logout()
+                .logoutSuccessUrl("/login?logout").permitAll()
+            //.and()
+            //    .requestMatchers()
+            //    .antMatchers("/", "/login", "/logout", "/oauth/authorize", "/oauth/confirm_access")
+            .and()
+                .authorizeRequests()
+                .anyRequest().authenticated()
+        ;
+        // @formatter:on
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         DelegatingPasswordEncoder passwordEncoder = (DelegatingPasswordEncoder) PasswordEncoderFactories.createDelegatingPasswordEncoder();
