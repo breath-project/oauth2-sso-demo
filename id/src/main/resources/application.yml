@@ -5,12 +5,14 @@ server:
 
 security:
   oauth2:
-    client:
-      client-id: client
-      client-secret: secret
-      scope: all
+    authorization:
+      check-token-access: permitAll()
 
 spring:
   security:
     user:
       password: pwd
+
+logging:
+  level:
+    org.springframework.security: DEBUG
