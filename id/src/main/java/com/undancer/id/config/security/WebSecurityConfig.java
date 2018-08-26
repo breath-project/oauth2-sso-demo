@@ -27,12 +27,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout").permitAll()
-            //.and()
-            //    .requestMatchers()
-            //    .antMatchers("/", "/login", "/logout", "/oauth/authorize", "/oauth/confirm_access")
+            .and()
+                .requestMatchers()
+                .antMatchers("/", "/login", "/oauth/authorize", "/oauth/confirm_access")
             .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()
+            .and()
+                .httpBasic()
         ;
         // @formatter:on
     }
