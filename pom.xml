@@ -6,15 +6,16 @@
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>ui</module>
-        <module>resource/message</module>
-        <module>id</module>
-    </modules>
     <packaging>pom</packaging>
 
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>id</module>
+        <module>ui</module>
+        <module>resource/message</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
