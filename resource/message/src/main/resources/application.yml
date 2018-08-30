@@ -8,7 +8,7 @@ server:
 security:
   oauth2:
     client:
-      client-id: demo
-      client-secret: demo
+      client-id: client
+      client-secret: secret
     resource:
       token-info-uri: ${auth-server:http://localhost:4000/id}/oauth/check_token
