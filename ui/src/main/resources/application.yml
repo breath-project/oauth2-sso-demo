@@ -1,15 +1,19 @@
-server:
-  port: 4000
+ui.url: http://ui:8080
+auth-server: http://id:4000/id
+msg.url: http://msg:5000
 
+server:
+  port: 8080
 security:
   oauth2:
     client:
-      client-id: 25cc8d391277df9d24ac
-      client-secret: 8dc1c763ca3ce168cec344f03df9c36c3f947241
-      access-token-uri: https://github.com/login/oauth/access_token
-      user-authorization-uri: https://github.com/login/oauth/authorize
-      client-authentication-scheme: form
+      client-id: demo
+      client-secret: demo
+      access-token-uri: ${auth-server}/oauth/token
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      scope: read, write
     resource:
-      user-info-uri: https://api.github.com/user
-#      token-info-uri:
-      prefer-token-info: false
+      token-info-uri: ${auth-server}/oauth/check_token
+logging:
+  level:
+    org.springframework.security: DEBUG
