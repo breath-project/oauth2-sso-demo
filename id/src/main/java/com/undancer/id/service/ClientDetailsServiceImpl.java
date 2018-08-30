@@ -7,7 +7,7 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.HashSet;
 
 /**
  * Created by undancer on 2017/5/24.
@@ -19,29 +19,12 @@ public class ClientDetailsServiceImpl implements ClientDetailsService {
         details.setClientSecret("secret");
         details.setResourceIds(details.getResourceIds());
         details.setAutoApproveScopes(Arrays.asList(".*"));
-        details.setScope(
-                Arrays.asList(
-                        "read",
-                        "write"
-                )
-        );
-        details.setAuthorizedGrantTypes(
-                Arrays.asList(
-                        "authorization_code",
-                        "password",
-                        "client_credentials",
-                        "implicit",
-                        "refresh_token"
-                )
-        );
+        details.setScope(Arrays.asList("read", "write"));
+        details.setAuthorizedGrantTypes(Arrays.asList("authorization_code",
+                "password", "client_credentials", "implicit", "refresh_token"));
         details.setAuthorities(
-                AuthorityUtils.commaSeparatedStringToAuthorityList(
-                        "ROLE_USER"
-                )
-        );
-        details.setRegisteredRedirectUri(
-                Collections.emptySet()
-        );
+                AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
+        details.setRegisteredRedirectUri(new HashSet<>(Arrays.asList("http://ui:8080/login")));
 //                details.setAccessTokenValiditySeconds(null);
 //                details.setRefreshTokenValiditySeconds(null);
         return details;

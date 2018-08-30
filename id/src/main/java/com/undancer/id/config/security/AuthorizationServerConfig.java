@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -17,6 +16,9 @@ import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.token.AccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
+/**
+ * Created by undancer on 2017/5/24.
+ */
 @Configuration
 @EnableAuthorizationServer
 @EnableConfigurationProperties(AuthorizationServerProperties.class)
@@ -66,13 +68,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
             endpoints.authenticationManager(this.authenticationManager);
         }
 
-        endpoints.userDetailsService(userDetailsService);
+        endpoints.userDetailsService(this.userDetailsService);
     }
 
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security)
-            throws Exception {
-        security.passwordEncoder(NoOpPasswordEncoder.getInstance());
+    public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+//        security.passwordEncoder(NoOpPasswordEncoder.getInstance());
         if (this.properties.getCheckTokenAccess() != null) {
             security.checkTokenAccess(this.properties.getCheckTokenAccess());
         }
