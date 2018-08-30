@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-cn">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Index :: OAuth2 SSO Demo</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/dist/css/bootstrap.css}"/>
+    <!-- Latest compiled and minified JavaScript -->
+    <script th:src="@{/webjars/jquery/dist/jquery.js}"></script>
+    <script th:src="@{/webjars/bootstrap/dist/js/bootstrap.js}"></script>
+</head>
+
+<body>
+<div class="container">
+    <h1>Demo</h1>
+    <a th:href="@{${@environment.getProperty('ui.url', 'http://localhost:8080')}}">Go back to UI</a>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn btn-default">Logout</button>
+    </form>
+
+    <div>
+        Index
+    </div>
+</div>
+</body>
+</html>
