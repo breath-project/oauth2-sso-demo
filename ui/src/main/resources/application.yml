@@ -1,0 +1,19 @@
+ui.url: http://ui:8080
+auth-server: http://id:4000/id
+msg.url: http://msg:5000
+
+server:
+  port: 8080
+security:
+  oauth2:
+    client:
+      client-id: client
+      client-secret: secret
+      access-token-uri: ${auth-server}/oauth/token
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      scope: read, write
+    resource:
+      token-info-uri: ${auth-server}/oauth/check_token
+logging:
+  level:
+    org.springframework.security: DEBUG
