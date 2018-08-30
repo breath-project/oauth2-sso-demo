@@ -9,8 +9,11 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Created by undancer on 2017/5/23.
+ */
 @RestController
-@RequestMapping(path = "/api/message")
+@RequestMapping(path = "/api/messages")
 public class MessageController {
 
     final List<Message> messages = Collections.synchronizedList(new LinkedList<>());
